@@ -1,0 +1,73 @@
+🚀 **How to Sort File Contents Without Built-In Unix Utilities** 🚀
+
+Have you ever been challenged to solve a problem in a job interview where you're not allowed to use the usual Unix utilities like `sort`, `uniq`, or even `awk`/`sed`? Sounds tricky, right?
+
+Here's a pure **Shell Script** solution for sorting a file's contents manually. Let's say we have a file named `students.txt` with student names and their scores.
+
+### Example File (`students.txt`)
+```
+Alice 67
+Bob 90
+Charlie 75
+David 90
+```
+
+### Pure Shell Script Solution:
+This script sorts the file's contents based on the **second column (score)**, without relying on any built-in utilities:
+
+```bash
+#!/bin/bash
+
+# Read file lines into an array
+i=0
+while read -r line; do
+    students[$i]="$line"
+    ((i++))
+done < students.txt
+
+# Bubble Sort based on 2nd field (score)
+n=${#students[@]}
+for ((i = 0; i < n; i++)); do
+    for ((j = 0; j < n - i - 1; j++)); do
+        score1=$(echo "${students[j]}" | cut -d' ' -f2)
+        score2=$(echo "${students[j+1]}" | cut -d' ' -f2)
+
+        if (( score1 > score2 )); then
+            # Swap the entries
+            temp="${students[j]}"
+            students[$j]="${students[j+1]}"
+            students[$((j+1))]="$temp"
+        fi
+    done
+done
+
+# Print sorted result
+echo "Sorted by score (ascending):"
+for entry in "${students[@]}"; do
+    echo "$entry"
+done
+```
+
+### Output:
+```
+Sorted by score (ascending):
+Alice 67
+Charlie 75
+Bob 90
+David 90
+```
+
+### What’s happening here:
+- **Reads file content** into an array.
+- Implements a **Bubble Sort** on the second column (scores).
+- **Swaps** lines if the score is out of order.
+- Prints out the sorted list.
+
+**Why use this?**
+- Great for scenarios where you can’t use standard utilities, but still need to process and sort data with shell scripting.
+
+---
+
+👉 **If you’ve been asked to write shell scripts under challenging constraints, this one might come in handy!**
+
+#unix #linux #shellscripting #programming #interviewprep #jobs #techskills #coding #opensource
