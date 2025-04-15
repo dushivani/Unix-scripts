@@ -1,0 +1,29 @@
+🧠 **UNIX Interview Gotcha – No `sort`, `uniq`, or `awk`?!**
+
+Had an interesting interview today where I was asked a common problem — but with a twist!
+
+**❓ Q: Remove duplicate lines from a file… without using any UNIX built-in utilities like `sort`, `uniq`, or `awk`.**
+
+Honestly, it felt a bit out of the blue at first (how often do we *not* use those tools in real life?). But it turned out to be a great exercise in logic and using plain shell scripting!
+
+Here’s a pure shell solution using associative arrays in Bash:
+
+```bash
+#!/bin/bash
+
+declare -A seen
+
+while IFS= read -r line; do
+    if [[ -z "${seen["$line"]}" ]]; then
+        echo "$line"
+        seen["$line"]=1
+    fi
+done < input.txt
+```
+
+📌 This script reads each line, checks if it's been "seen" before using a Bash hash map, and prints only the unique ones — no external commands involved!
+
+✅ Good reminder that sometimes interviews test your fundamentals more than your day-to-day toolbelt.
+
+
+#ShellScripting #Unix #Linux #Bash #InterviewQuestions #TechInterviews #ProductionSupport #Automation #ProblemSolving #LinkedInLearning
