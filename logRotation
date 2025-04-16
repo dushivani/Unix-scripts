@@ -33,7 +33,63 @@ echo "✅ Log rotation complete."
 - Helps in better log retention strategy
 
 📌 **Tip:** You can schedule this script using a cron job for daily execution!
+---
+
+### 🕒 How to Schedule a Shell Script Using Cron
+
+**Step 1: Save Your Script**
+
+Save the log rotation script to a file, for example:
+
+```bash
+/home/username/scripts/log_rotation.sh
+```
+
+Make sure it is **executable**:
+
+```bash
+chmod +x /home/username/scripts/log_rotation.sh
+```
 
 ---
 
-🔖 **#ShellScripting #Automation #LinuxScripts #LogRotation #ProductionSupport #DevOps #BashScripting #SysAdmin #TechLife #SRE**
+**Step 2: Open the Crontab**
+
+Open your crontab file for editing:
+
+```bash
+crontab -e
+```
+
+---
+
+**Step 3: Add a Cron Job Entry**
+
+To run the script **daily at 2 AM**, add this line:
+
+```bash
+0 2 * * * /home/username/scripts/log_rotation.sh >> /home/username/scripts/log_rotation.log 2>&1
+```
+
+🔹 This means:
+- `0` → Minute
+- `2` → Hour (2 AM)
+- `*` → Every day of the month
+- `*` → Every month
+- `*` → Every day of the week
+
+`>>` appends output to a log file so you can track what the script does.
+
+---
+
+**Step 4: Save and Exit**
+
+After saving the crontab, it will automatically install your cron job.
+
+---
+
+✅ Done! Your script will now run daily at 2 AM.
+
+---
+
+**#ShellScripting #Automation #LinuxScripts #LogRotation #ProductionSupport #DevOps #BashScripting #SysAdmin #TechLife #SRE**
