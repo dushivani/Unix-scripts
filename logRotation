@@ -1,0 +1,39 @@
+### 🔁 Automating Log Rotation with Shell Script
+
+In production support, **automating log maintenance** is essential to ensure optimal performance and disk space management. Here's a simple shell script I used to **archive, compress, and clean up old log files**.
+
+🛠️ **What it does:**
+- Archives and compresses logs older than today
+- Moves them to a backup directory
+- Deletes archived logs older than 7 days
+
+```bash
+#!/bin/bash
+
+# Set log and archive paths
+log_dir="/var/log/myapp"
+backup_dir="/var/log/myapp/archive"
+days_to_keep=7
+
+# Create backup directory if not exists
+mkdir -p "$backup_dir"
+
+# Find and compress yesterday's logs
+find "$log_dir" -name "*.log" -mtime +0 -exec gzip {} \; -exec mv {}.gz "$backup_dir" \;
+
+# Delete archives older than N days
+find "$backup_dir" -name "*.gz" -mtime +$days_to_keep -exec rm -f {} \;
+
+echo "✅ Log rotation complete."
+```
+
+🔍 **Why it's useful:**
+- Prevents disk space overflow
+- Keeps recent logs easily accessible
+- Helps in better log retention strategy
+
+📌 **Tip:** You can schedule this script using a cron job for daily execution!
+
+---
+
+🔖 **#ShellScripting #Automation #LinuxScripts #LogRotation #ProductionSupport #DevOps #BashScripting #SysAdmin #TechLife #SRE**
