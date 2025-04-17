@@ -1,0 +1,24 @@
+🚀 Reverse a String in Shell Scripting – No Built-in Commands! 🚀
+
+
+Sometimes in support interviews, you're asked to solve basic problems without using built-in commands like rev, tac, or awk. Here's a great example I encountered recently:
+🔁 Reverse a string using only bash scripting logic. Here's how I did it 👇
+
+#!/bin/bash
+str="shivani"
+rev=""
+
+for (( i=${#str}-1; i>=0; i-- )); do
+  rev="$rev${str:$i:1}"
+done
+
+echo "Original: $str"
+echo "Reversed: $rev"
+
+
+✅ No external utilities used
+🧠 Just pure logic with parameter expansion and loops!
+💡 This kind of task can pop up in interviews, especially for L2/L3 support roles involving Unix and shell scripting.
+
+
+#ShellScripting #UnixTips #TechnicalInterview #BashScripting #ReverseString #SupportEngineer #LinuxCommands #Automation #JobSearch #DevOps #ProductionSupport #OpenToWork
