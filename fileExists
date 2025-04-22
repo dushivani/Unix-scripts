@@ -1,0 +1,19 @@
+### ✅ **Check If File Exists**
+```bash
+read -p "Enter file name: " file
+
+if [ -e "$file" ]; then
+  if [ -f "$file" ]; then 
+    echo "File exists"
+  fi
+else
+  echo "File doesn't exist"
+fi
+```
+
+---
+
+### 🧠 Quick Breakdown:
+- `[ -e "$file" ]` → checks if the file exists (file or directory)
+- `[ -f "$file" ]` → ensures it's a **regular file** (not a directory or special file)
+- Always quote `"${var}"` to prevent issues with spaces in filenames.
