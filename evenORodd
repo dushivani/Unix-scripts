@@ -1,0 +1,19 @@
+🧪 New Challenge: Print Numbers from 1 to N and say if each is Even or Odd
+Example:
+
+1 is Odd  
+2 is Even  
+3 is Odd  
+...  
+
+
+read -p "Enter last number: " x 
+
+for ((i=1; i<=x; i++))
+do 
+    if (( i % 2 == 0 )); then
+        echo "$i is even"
+    else 
+        echo "$i is odd"
+    fi
+done
