@@ -1,0 +1,101 @@
+🔄 Challenge: Count Vowels in a String
+Write a script that counts the number of vowels (a, e, i, o, u) in a string that the user inputs.
+
+Example:
+Input:
+
+csharp
+Copy
+Edit
+Enter a string: Hello World
+Output:
+
+yaml
+Copy
+Edit
+Vowels count: 3
+Tips:
+Use a for loop to iterate over each character.
+
+Use an if condition to check if the character is a vowel.
+
+Remember to handle case insensitivity (both uppercase and lowercase vowels).
+
+_____________________________________________________________________________________________________________________________
+
+
+🔧 Solution: Loop Through Each Character
+bash
+Copy
+Edit
+read -p "Enter a string: " str
+vowel_count=0
+
+# Loop through each character of the string
+for ((i=0; i<${#str}; i++))
+do
+  char="${str:i:1}"   # Extract one character at a time
+  if [[ "$char" =~ [aeiouAEIOU] ]]; then  # Check if it's a vowel
+    ((vowel_count++))  # Increment vowel count
+  fi
+done
+
+echo "Vowels count: $vowel_count"
+🧠 Breakdown:
+${#str} gets the length of the string.
+
+${str:i:1} extracts one character at index i from the string.
+
+[[ "$char" =~ [aeiouAEIOU] ]] checks if the character is a vowel (both lowercase and uppercase).
+
+Example:
+Input:
+
+csharp
+Copy
+Edit
+Enter a string: Hello World
+Output:
+
+yaml
+Copy
+Edit
+Vowels count: 3
+
+
+
+
+****************************************************************************************************
+note -- 
+
+🔍 Difference Between "$char" vs char in the [[ =~ ]] Condition
+✅ This works correctly:
+bash
+Copy
+Edit
+[[ "$char" =~ [aeiouAEIOU] ]]
+Because:
+
+"${char}" ensures you're comparing one character (the one you extracted).
+
+Quoting also avoids word splitting or pattern expansion.
+
+❌ But this:
+bash
+Copy
+Edit
+[[ char =~ [aeiouAEIOU] ]]
+...does not use the value of the variable char. It literally checks if the word “char” (the string "char" itself) matches the pattern [aeiouAEIOU].
+
+"char" contains the letter 'a', which is a vowel — so it always returns true!
+
+💥 What Happens Then:
+You're always matching "char" with [aeiouAEIOU], so:
+
+Every iteration counts as a match
+
+vowel_count increments on every loop
+
+Which gives you an inflated vowel count like 11
+
+
