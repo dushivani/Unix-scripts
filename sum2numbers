@@ -1,0 +1,21 @@
+Sum of Two Numbers
+
+read -p "Enter two numbers to sum: " x y
+
+sum=$((x + y))
+echo "Sum is: $sum"
+
+
+
+or------------------------
+You can also pass numbers as arguments, like this:
+
+bash
+Copy
+Edit
+#!/bin/bash
+x=$1
+y=$2
+sum=$((x + y))
+echo "Sum is: $sum"
+Usage: ./sum.sh 10 20
