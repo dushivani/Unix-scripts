@@ -1,0 +1,33 @@
+🔄 Challenge: Print Even Numbers Between 1 and N
+🧠 Goal:
+
+Ask the user to enter a number N
+
+Print all even numbers from 1 to N (inclusive)
+
+Example:
+If user enters 10, output should be:
+
+Copy
+Edit
+2
+4
+6
+8
+10
+
+********************************************************************
+read -p "Enter number: " x
+
+for ((i=1; i<=x; i++))
+do
+  if (( i % 2 == 0 )); then
+    echo "$i"
+  fi
+done
+🧠 Key Fix:
+Use (( ... )) instead of [[ ... ]] for math comparisons.
+
+(( i % 2 == 0 )) does arithmetic evaluation.
+
+Also, good catch starting from 2 — but it's more flexible to loop from 1 and let the condition filter evens.
