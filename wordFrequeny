@@ -1,0 +1,95 @@
+🧩 Challenge: Count Word Frequency in a Sentence
+🗣️ Prompt:
+Ask the user to enter a sentence, and then print how many times each word appears.
+
+💡 Example:
+Input:
+
+bash
+Copy
+Edit
+This is a test. This test is simple.
+Output:
+
+bash
+Copy
+Edit
+This → 2
+is → 2
+a → 1
+test. → 1
+test → 1
+simple. → 1
+(Note: This raw version includes punctuation — we can later clean that too!)
+
+🛠️ Hints:
+Use read -a to read sentence into an array.
+
+Loop over each word and store counts in an associative array: declare -A wordCount
+
+Use (( )) to increment
+
+**********************************************************************************************************
+
+
+Totally okay! 😄 That’s *exactly* what practice is for — let’s break it down together step-by-step. I’ll explain everything and give you a starter script 💪
+
+---
+
+### 🧩 Problem: Count how often each word appears in a sentence
+
+---
+
+### ✅ Step-by-step Plan:
+
+1. Take a sentence input from the user  
+2. Split it into words  
+3. Loop through each word  
+4. Count how many times each word occurs using a dictionary (in Bash: `associative array`)  
+5. Print the result
+
+---
+
+### 🔧 Working Bash Script:
+
+```bash
+#!/bin/bash
+
+# Step 1: Read sentence from user
+read -p "Enter a sentence: " sentence
+
+# Step 2: Declare associative array
+declare -A wordCount
+
+# Step 3: Convert sentence into array of words
+for word in $sentence; do
+  # Step 4: Increment count
+  ((wordCount["$word"]++))
+done
+
+# Step 5: Print the word counts
+echo "Word frequencies:"
+for word in "${!wordCount[@]}"; do
+  echo "$word → ${wordCount[$word]}"
+done
+```
+
+---
+
+### 🧪 Sample Run:
+
+```
+Enter a sentence: hello world hello bash
+Word frequencies:
+hello → 2
+world → 1
+bash → 1
+```
+
+---
+
+### ✨ Let’s Upgrade Later (optional):
+- Remove punctuation
+- Make it case-insensitive (`Hello` = `hello`)
+
+---
