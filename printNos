@@ -1,0 +1,18 @@
+### ✅ **Print Numbers from 1 to 5**
+```bash
+read -p "Enter start number: " x
+read -p "Enter end number: " y
+
+for ((i=x; i<=y; i++))
+do
+  echo $i
+done
+```
+
+---
+
+### 🧠 Key Points:
+- `read -p` only takes one variable at a time — if you want both in one line, you can do:
+  ```bash
+  read -p "Enter start and end: " x y
+  ```
