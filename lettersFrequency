@@ -1,0 +1,29 @@
+### 🔁 Challenge 1: Count letters instead of words
+
+**Task:**  
+Take a string from the user, and count how many times each *letter* appears (ignore spaces).
+
+---
+
+### 🧪 Sample Input:
+```
+hello world
+```
+
+**Sample Output:**
+```
+h → 1
+e → 1
+l → 3
+o → 2
+w → 1
+r → 1
+d → 1
+```
+
+---
+
+### 🪄 Hint:
+- Loop through each character
+- Use an associative array to store character → count
+
